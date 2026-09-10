@@ -2,6 +2,13 @@
 {% block titulo %}Produtos{% endblock %}
 {% block conteudo %}
     <h1>Produtos da Quitanda</h1>
+    
+    <p>Categorias: 
+        {% for c in categorias %}
+            <a href="{{ url_for('produtos.ver_categoria', nome=c) }}">{{ c }}</a> | 
+        {% endfor %}
+    </p>
+
     <form method="get">
         <input type="text" name="q" placeholder="Buscar produto..." value="{{ q }}">
         <button type="submit">Buscar</button>
@@ -10,7 +17,7 @@
         <div class="card">
             <h3>{{ p['nome'] }}</h3>
             <p>{{ p['categoria'] }} — R$ {{ p['preco'] }} por {{ p['unidade'] }}</p>
-            <a href="{{ url_for('ver_produto', produto_id=p['id']) }}">Ver detalhes</a>
+            <a href="{{ url_for('produtos.ver_produto', produto_id=p['id']) }}">Ver detalhes</a>
         </div>
     {% else %}
         <p>Nenhum produto encontrado.</p>

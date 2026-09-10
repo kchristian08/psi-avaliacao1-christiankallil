@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block titulo %}{{ produto['nome'] }}{% endblock %}
+{% block conteudo %}
+    <h2>{{ produto['nome'] }}</h2>
+    <p><strong>Categoria:</strong> {{ produto['categoria'] }}</p>
+    <p><strong>Preço:</strong> R$ {{ produto['preco'] }} por {{ produto['unidade'] }}</p>
+    <br>
+    <a href="{{ url_for('produtos.index') }}">Voltar para a quitanda</a>
+{% endblock %}

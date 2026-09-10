@@ -1,5 +1,13 @@
 # models.py — Camada Model da Quitanda da Esquina (dados em memória)
 
+class Produto:
+    def __init__(self, id, nome, categoria, preco, unidade):
+        self.id = id
+        self.nome = nome
+        self.categoria = categoria
+        self.preco = preco
+        self.unidade = unidade
+
 usuarios = [
     {"id": 1, "nome": "admin", "senha": "1234"},
 ]
@@ -12,21 +20,17 @@ produtos = [
     {"id": 5, "nome": "Tomate", "categoria": "Legume", "preco": 6.20, "unidade": "kg"},
 ]
 
-
 def buscar_produto(produto_id):
     for p in produtos:
         if p["id"] == produto_id:
             return p
     return None
 
-
 def buscar_por_categoria(categoria):
     return [p for p in produtos if p["categoria"].lower() == categoria.lower()]
 
-
 def buscar_por_nome(parte):
     return [p for p in produtos if parte.lower() in p["nome"].lower()]
-
 
 def todas_categorias():
     categorias = []
